@@ -1,0 +1,20 @@
+#banner h1{
+    font-size: 80px !important;
+}
+#footer h5,a{
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#footer .container{
+
+    padding: 30px 0 30px 0;
+}
+#footer{
+    background-color: #000000;
+
+    padding: 30px 0 30px 0;
+}
+hr{
+    color: #ffffff;
+}

@@ -1,0 +1,13 @@
+body{
+    padding: 0px !important;
+}
+.fondo{
+    background-image: url('/image/banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+a{
+    color: #ffffff;
+}

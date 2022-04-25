@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="/dist/bootstrap-5.1.3-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script src="https://kit.fontawesome.com/f84ff77aaf.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+  <!-- Inicio del header -->
+
+
+  <section id="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" th:href="@{/home}" ><img src="/image/eventusLogo.png" width="50%" alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" th:href="@{/home}" >Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/cliente/{id} (id = ${clientes.getIdCliente()})}" >Perfil</a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link " th:href="@{/evento}">Eventos</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <a class="nav-link text-black" th:href="@{/logout}" >Salir</a>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </section>
+  <!-- Fin  del header -->
+
+  <!--  Inicio del formulario-->
+    <section id="formulario" class="margint-100 marginb-100 pantalla-m">
+
+      <div class="container">
+
+        <div th:object="${eventos}">
+          <h1 class="mb-3" th:text="${eventos.getNombreEvento()}"><i class="fa-solid fa-calendar-day  text-black"></i></h1>
+        </div>
+
+        <div class="row margint-50 marginb-50">
+          <div class="col-6">
+            <form method="post"  th:object="${eventos}"  class="px-1 mx-3 font-weight-bolder padded">
+
+              <div class="form-group">
+                <input type="text" class="form-control" id="idEvento" name="idEvento" th:field="*{idEvento}" th:hidden="true" >
+                <input type="text" class="form-control" id="portadaEvento" name="portadaEvento" th:field="*{portadaEvento}" th:hidden="true" >
+                <input type="text" class="form-control" id="camposEventos" name="camposEventos" th:field="*{camposEventos}" th:hidden="true" >
+
+              </div>
+              <div class="form-group">
+                <label for="nombreEvento">Nombre:</label>
+                <input type="text" class="form-control" id="nombreEvento" name="nombreEvento" th:field="*{nombreEvento}"  th:disabled="true">
+              </div>
+
+              <div class="form-group">
+                <label for="fechaEvento">Fecha:</label>
+                <input type="date" class="form-control" id="fechaEvento" name="fechaEvento" th:field="*{fechaEvento}" th:disabled="true">
+              </div>
+
+              <div class="form-group">
+                <label for="horaEvento">Hora:</label>
+                <input type="time" class="form-control" id="horaEvento" name="horaEvento" th:field="*{horaEvento}" th:disabled="true">
+              </div>
+
+              <div class="form-group">
+                <label for="descripcionEvento">Descripción:</label>
+                <input type="text" class="form-control" id="descripcionEvento" name="descripcionEvento" th:field="*{descripcionEvento}" th:disabled="true">
+              </div>
+
+              <div class="form-group">
+                <label for="informaciónEvento">Información adicional:</label>
+                <input type="text" class="form-control" id="informaciónEvento" name="informaciónEvento" th:field="*{informaciónEvento}" th:disabled="true">
+              </div>
+
+
+
+            </form>
+
+            <form method="post" th:action="@{/comprar/entrada/save}"  th:object="${entradas}"  class="px-1 mx-3 font-weight-bolder padded">
+
+              <input type="text" class="form-control" id="idEntrada" name="nombreEntrada" th:field="*{idEntrada}" th:hidden="true">
+
+              <div class="form-group">
+                <label for="nombreEntrada">Nombre Entrada:</label>
+                <input type="text" class="form-control" id="nombreEntrada" name="nombreEntrada" th:field="*{nombreEntrada}"  th:disabled="true">
+              </div>
+
+              <div class="form-group">
+                <label for="entradaPrecio">Precio:</label>
+                <input type="text" class="form-control" id="entradaPrecio" name="entradaPrecio" th:field="*{entradaPrecio}" th:disabled="true">
+              </div>
+
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block mt-3 mb-1">Comprar entrada</button>
+              </div>
+            </form>
+
+          </div>
+          <div class="col-1 margint-100">
+          </div>
+
+
+          <div th:object="${eventos} "class="col-5">
+
+            <img th:src="${'/'+eventos.portadaEvento}" width="70%" height="200px" alt="...">
+
+            <div class="  margint-50">
+
+              <img th:src="${'/'+eventos.getCamposEventos()}" width="70%"  height="200px" alt="...">
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+    </section>
+
+  <!--  Fin del formulario-->
+
+
+<!-- Inicio footer-->
+
+<section id="footer">
+  <footer>
+  <div class="container">
+    <hr>
+    <div class="row">
+        <div class="col-6">
+          <h5>Todos los derechos reservados por Eventus Copyright © 2022</h5>
+        </div>
+        <div class="col-6  d-flex justify-content-between">
+          <a href=""><span>Acerca de</span></a>
+          <a href=""><span>Contacto</span></a>
+          <a href=""><span>Libro de reclamaciones</span></a>
+          <a href=""><span>Preguntas frecuentes</span></a>
+          
+        </div>
+    </div>
+  </div>
+</footer>
+</section>
+<!-- Fin footer-->
+</body><script src="dist/b bootstrap-5.1.3-dist/js/bootstrap.bundle.js"></script>
+</html>

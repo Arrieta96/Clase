@@ -1,0 +1,33 @@
+
+#footer h5,a{
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#footer .container{
+
+    padding: 30px 0 30px 0;
+}
+#footer{
+    background-color: #000000;
+
+    padding: 30px 0 30px 0;
+}
+hr{
+    color: #ffffff;
+}
+
+h2{
+    color: #ffffff;
+}
+
+.banner{
+    background-image: url('/image/bannerEventos.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    height: 140px;
+    padding:40px;
+
+}
+
